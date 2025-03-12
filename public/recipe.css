@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Recipe Title */
+
+main{
+    flex:1;
+}
+
+header {
+    background: linear-gradient(to right, purple, pink);
+    color: white;
+    padding: 0;
+}
+
+
+/* Recipe info */
+p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    margin-top: 25px;
+}
+
+/* Ingredients Section */
+h2 {
+    color: rgb(218, 22, 218);
+    font-size: 24px;
+    margin-top: 100px;
+}
+
+/* Ingredient Container */
+.ingredient-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    justify-content: center;  
+    margin-top: 50px;
+}
+
+
+/* Ingredient Hover Box */
+.hover-box {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(225, 147, 225);
+    text-decoration: none;
+    font-size: 18px;
+    background-color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hover-box:hover {
+    background-color: rgb(222, 53, 222);
+    color: white;
+    transform: scale(1.05);
+}
+
+/*  Popup Box for ingredients */
+.popup {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    width: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 100;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    white-space: normal;
+    pointer-events: none;
+}
+
+/* this makes popups appear only when hovering */
+.hover-box:hover .popup {
+    display: block;
+}
+
+/*  Back Button */
+a {
+    display: inline-block;
+    padding: 15px 0;
+    margin-top: 220px;
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    background-color: plum;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+a:hover {
+    background-color: rgb(232, 71, 232);
+}

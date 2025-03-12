@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="recipes.css">
+</head>
+<body>
+    <header>
+        <h1>Recipe Collection</h1>
+        <nav class="nav">
+            <a href="/">Home</a>
+            <a href="/recipes" class="active">View Recipes</a>
+            <a href="/add">Add a Recipe</a>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- Search Bar -->
+        <div class="search">
+            <form action="/recipes" method="GET">
+                <input type="text" name="search" placeholder="Search recipes..." value="<%= searchQuery %>">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <!-- display the specificc recipe-->
+        <div class="description">
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                    <li>
+                        <strong><%= recipe.RecipeName %></strong>  
+                        (Protein: <%= recipe.Protein %>, Servings: <%= recipe.Servings %>)
+                        <a href="/recipes/<%= recipe.RecipeID %>">View Recipe</a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
+
+    </main>
+
+</body>
+</html>

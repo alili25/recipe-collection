@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+
+    <header>
+        <h1>Add a New Recipe</h1>
+        <nav class="nav">
+            <a href="/">Home</a>
+            <a href="/recipes">View Recipes</a>
+            <a href="/add" class="active">Add a Recipe</a>
+        </nav>
+    </header>
+
+    <!-- this is for the form-->
+    <form action="/add" method="POST">
+        <label for="RecipeName">Recipe Name:</label>
+        <input type="text" id="RecipeName" name="RecipeName" required><br>
+
+        <label for="Protein">Protein:</label>
+        <select id="Protein" name="Protein">
+            <option value="Chicken">Chicken</option>
+            <option value="Beef">Beef</option>
+            <option value="Tofu">Tofu</option>
+            <option value="Grains">Grains</option>
+        </select><br>
+
+        <label for="PrepTime">Prep Time (mins):</label>
+        <input type="number" id="PrepTime" name="PrepTime" required><br>
+
+        <label for="CookTime">Cook Time (mins):</label>
+        <input type="number" id="CookTime" name="CookTime" required><br>
+
+        <label for="Servings">Servings:</label>
+        <input type="number" id="Servings" name="Servings" required><br>
+
+        <!-- selection for the ingredients-->
+        <h3>Select Ingredients:</h3>
+        <% ingredients.forEach(ingredient => { %>
+            <div class="ingredient-container">
+                <input type="checkbox" name="IngredientIDs" value="<%= ingredient.IngredientID %>">
+                <label><%= ingredient.IngredientName %></label>
+            </div>
+        <% }); %>
+
+        <button type="submit">Add Recipe</button>
+    </form>
+
+    <!-- idkkkkkk validation -->
+<script>
+    document.getElementById("recipeForm").addEventListener("submit", function(event) {
+        const recipeName = document.getElementById("recipeName").value.trim();
+        const protein = document.getElementById("protein").value;
+        const prepTime = document.getElementById("prepTime").value;
+        const cookTime = document.getElementById("cookTime").value;
+        const servings = document.getElementById("servings").value;
+        const ingredients = document.getElementById("ingredients").selectedOptions.length;
+
+        if (recipeName === "") {
+            alert("Please enter a recipe name.");
+            event.preventDefault();
+            return;
+        }
+        if (protein === "") {
+            alert("Please select a protein type.");
+            event.preventDefault();
+            return;
+        }
+        if (prepTime < 1 || cookTime < 1) {
+            alert("Prep time and cook time must be at least 1 minute.");
+            event.preventDefault();
+            return;
+        }
+        if (servings < 1) {
+            alert("Please enter at least 1 serving.");
+            event.preventDefault();
+            return;
+        }
+        if (ingredients === 0) {
+            alert("Please select at least one ingredient.");
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+</html>
